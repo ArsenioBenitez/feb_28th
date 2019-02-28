@@ -13,7 +13,15 @@ var rows = table.selectAll('tr')
                 .enter()
                 .append("tr");
 rows.append("td")
-    .text(function(d){return d.name});
+    .text(function(d){return d.name})
+    .style("color",function(d){
+              if(d.gender == "male"){
+                return "pink";
+              }
+              else{
+                return "green";
+              }
+            });
 rows.append("td")
         .text(function(d)
         {
@@ -27,8 +35,13 @@ rows.append("td")
     return "blue";
   }
 });
-
-
-
 rows.append("td")
         .text(function(d){return d.gender});
+
+var t = "If a peron's age is less than 20, the age appears in red font, if not, it appears in blue font. Male's names appear in pink font while female's names appear in blue font.";
+var da = [1];
+d3.select("body").selectAll('p')
+             .data(da)
+             .enter()
+             .append('p')
+             .text(t);
